@@ -1,6 +1,7 @@
 "use strict";
 
-const XLSX = require("node-xlsx");
+//const XLSX = require("node-xlsx").default;
+const XLSX = require("xlsx");
 const fs = require("fs");
 
 /**
@@ -11,7 +12,7 @@ const fs = require("fs");
 const downloadXlsx = ( data ) => {
     try{
         // Headers
-        const header = ["link", "titulo", "descripcion", "cod_art", "img", "img_adicionales"];
+        const header = ["id", "title", "description", "price", /*"sale", "price",*/ "link", "image link", "additional image link"];
 
         // Create a new worksheet
         const worksheet = XLSX.utils.json_to_sheet(data, { header });
@@ -29,6 +30,7 @@ const downloadXlsx = ( data ) => {
         return console.log("xlsx ready with the name: new_feed_LA.xlsx");
     }catch(e){
         console.log("error creating xlsx: ", e)
+        return e.message
     };
 };
 

@@ -19,11 +19,12 @@ const main = async () => {
         if(Array.isArray(codes)){
             const data = await getData(codes);
             // Test data
-            console.log(typeof(data));
             console.log(data);
+            console.log(data.length)
+            console.log(typeof(data));
 
-            if(Array.isArray(data)){
-                return downloadXlsx(data);
+            if(Array.isArray(data[0])){
+                return downloadXlsx(data[0]);
             }else{
                 return console.error("The data is not an array");
             };
